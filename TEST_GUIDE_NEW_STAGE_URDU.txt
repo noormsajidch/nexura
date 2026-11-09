@@ -1,0 +1,8 @@
+NEXURA Tile 2 staged trial, 2026-11-07
+1. Staff > Targets / Performance / Criteria now offers Criteria and Target only.
+2. Criteria > Others heading simplified. Multiple dated previous-year requirements can be added and saved.
+3. IMPORTANT: Multi-year automatic eligibility verification is NOT enabled yet. Incomplete/missing year evidence will not generate a success tick. Manual criteria review remains necessary.
+4. Staff profile: previous business record collapsible, last five completed years visible; older entries not deleted from underlying data.
+5. Staff attachment shows No attachment when absent, controls retained when attached.
+6. Client profile reactivation switch is a trial control; test customer stage routing carefully before production.
+7. No cloud sync; do not use sensitive real data. Save JSON backup before deployment.

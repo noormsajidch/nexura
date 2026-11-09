@@ -1,0 +1,1 @@
+Staff table: only Profile button; staff name plain text. Staff profile header: Name, Code, Appointment Date, Expiry Date, Phone, Designation; duplicate details removed. Staff and Customers share report buttons removed. Other functions retained. Test in browser after deployment.

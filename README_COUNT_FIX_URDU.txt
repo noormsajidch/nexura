@@ -1,0 +1,1 @@
+To-Do count matches filtered non-completed table rows. Other functions unchanged.

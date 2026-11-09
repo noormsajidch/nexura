@@ -1,0 +1,17 @@
+NEXURA STAGE 2 — TEST EACH SCREEN
+
+پہلے موجودہ Test Backup محفوظ کریں۔ نئی ZIP الگ Deploy کریں۔
+1. Login: Creator login/logout؛ یہ ابھی local demo ہے، حقیقی online protection نہیں۔
+2. Admin: Promotion tools اور Export/Import صرف Admin Tile میں؛ footer controls hidden۔
+3. Staff: Code-wise manager/junior hierarchy؛ Registration Number / National ID، Appointment/Expiry چیک کریں۔
+4. Customers: Add/Edit Client میں Client Name اور Father/Spouse/Guardian Name الگ؛ پاکستانی نمبر +92 میں convert؛ phone optional۔
+5. Policy Issued: نئی جاری کردہ policy براہ راست Policy Records میں دکھائی دے۔
+6. Policy Records: Search، View/Edit، Complete Channel، CSV preview/confirm، duplicate skip۔
+7. CSV: Provided template استعمال کریں؛ headers تبدیل نہ کریں۔ Date format YYYY-MM-DD یا DD-MMM-YY۔
+8. PDF: اس Stage میں automatic PDF extraction نہیں؛ scanned PDF کو پہلے تصدیق شدہ CSV میں تبدیل کریں۔
+9. Historical imported policies staff performance یا business events نہیں بدلتی۔
+10. Premium reminder view: On/Off، 7 دن، 30 دن، Overdue؛ 2027 کی due آج کے 30 دن میں نہیں آئے گی۔
+11. Diary: Existing premium-linked tasks regular task list سے الگ؛ historical tasks delete نہیں ہوتے۔
+12. Finance, Files: پرانے منظور شدہ actions محفوظ؛ test کریں۔
+
+NOTICE: CamScanner PDF is a scanned five-page list. Its data is not silently imported. Some print is unclear; use verified CSV. Staff channel import is not yet implemented, only template provided.

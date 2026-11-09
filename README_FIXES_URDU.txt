@@ -1,0 +1,1 @@
+Fixes: login error visibility, mobile login scroll, Admin-only promotion buttons, backup buttons moved inside Admin, browser back handling. Local demo is not secure authentication. Test on a separate copy; do not clear browser storage.

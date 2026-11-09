@@ -1,0 +1,1 @@
+Premium Reminders: removed extra generic table search and duplicate CSV/PDF toolbar. Existing premium-specific Live Search, Download CSV and PDF / Print remain unchanged. Other table reporting unchanged.
