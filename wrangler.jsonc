@@ -3,5 +3,12 @@
   "compatibility_date": "2026-11-08",
   "assets": {
     "directory": "."
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nexura-db",
+      "database_id": "151eba29-d33a-4d27-9ea1-a797e209758d"
+    }
+  ]
 }
