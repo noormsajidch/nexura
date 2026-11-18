@@ -33,10 +33,55 @@ function cleanupCompletedTasks(){
 }
 function save(){cleanupCompletedTasks();try{localStorage.setItem(KEY,JSON.stringify(db))}catch{alert('Local storage full. Export your backup. Attachments may be too large.')}}
 // Update task completion timestamps on every status change, including subtask completion.
+function queueTasksForSync() {
+  if (!window.NexuraTasksSync) return;
 
+  for (const task of db.tasks) {
+    window.NexuraTasksSync.queueTask(task);
+  }
+}
 if(cleanupCompletedTasks())save();
-function add(collection,fields){const r={id:id(),...fields,createdAt:new Date().toISOString()};db[collection].push(r);save();return r}
-function update(collection,recordId,fields){const r=db[collection].find(x=>x.id===recordId);if(r){const previous=r.status;Object.assign(r,fields);if(collection==='tasks'&&previous!==r.status){if(r.status==='Completed')r.completedAt=new Date().toISOString();else delete r.completedAt}save()}return r}
+function add(collection, fields) {
+  const r = {
+    id: id(),
+    ...fields,
+    createdAt: new Date().toISOString()
+  };
+
+  db[collection].push(r);
+  save();
+
+  if (collection === 'tasks') {
+    window.NexuraTasksSync?.queueTask(r);
+  }
+
+  return r;
+}
+
+function update(collection, recordId, fields) {
+  const r = db[collection].find(x => x.id === recordId);
+
+  if (r) {
+    const previous = r.status;
+    Object.assign(r, fields);
+
+    if (collection === 'tasks' && previous !== r.status) {
+      if (r.status === 'Completed') {
+        r.completedAt = new Date().toISOString();
+      } else {
+        delete r.completedAt;
+      }
+    }
+
+    save();
+
+    if (collection === 'tasks') {
+      window.NexuraTasksSync?.queueTask(r);
+    }
+  }
+
+  return r;
+}
 function get(c,i){return db[c].find(x=>x.id===i)}
 function staffName(i){const r=get('staff',i);return r?`${r.name} (${r.code})`:'—'}
 function clientName(i){return get('customers',i)?.name||'—'}

@@ -1,0 +1,15 @@
+.wrangler/
+node_modules/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.log
+*.rar
+*.zip
+*backup*
+*before-*
+*trial*
