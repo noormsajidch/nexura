@@ -1,3 +1,203 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NEXURA Web v2.0 • Clean Test</title><style>
-:root{font-family:system-ui,Segoe UI,sans-serif;color:#172a43;background:#f3f6fb}*{box-sizing:border-box}body{margin:0}header{background:#173b67;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px}header h1{margin:0;font-size:24px}header small{color:#cde1fa}header .tag{background:#2b5685;padding:8px 12px;border-radius:9px;font-size:12px}.layout{max-width:1450px;margin:auto;padding:20px}nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:20px}button{cursor:pointer;font:inherit}nav button{background:#fff;border:1px solid #d7e2ef;border-radius:12px;padding:15px 8px;color:#284a72;font-weight:700;min-height:70px}nav button.active{background:#dceaff;border-color:#7aabec;color:#153e77}.panel,.stat{background:#fff;border:1px solid #dce5f0;border-radius:13px;padding:18px;margin-bottom:14px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stat strong{display:block;font-size:25px;color:#1e5a9c}.row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}.row.start{justify-content:flex-start}h2{margin:0 0 10px;font-size:22px}h3{margin:4px 0 10px}.muted{color:#687b92;font-size:13px}input,select,textarea{width:100%;font:inherit;padding:10px;border:1px solid #c7d5e6;border-radius:8px;background:#fff}label{display:block;font-size:13px;font-weight:650;margin:10px 0 4px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}.primary,.secondary,.danger{border:0;border-radius:8px;padding:10px 14px}.primary{background:#2364ad;color:#fff}.secondary{background:#e6eef8;color:#24456a}.danger{background:#fbe3e6;color:#a32335}.small{font-size:12px;padding:6px 9px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:650px}td,th{border-bottom:1px solid #e4eaf3;text-align:left;padding:10px;font-size:13px}th{color:#60748e;background:#f6f9fd}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tabs button{border:1px solid #cfdbea;background:white;border-radius:9px;padding:9px 11px}.tabs button.active{background:#dceaff;color:#1a518e}.modal{position:fixed;inset:0;background:#112744a8;display:flex;align-items:center;justify-content:center;padding:14px;z-index:10}.modal.hidden{display:none}.modal>.inside{width:min(780px,100%);max-height:92vh;overflow:auto;background:white;border-radius:14px;padding:20px}.hint{background:#f0f6ff;border-left:3px solid #3979be;padding:10px 13px;margin:10px 0;font-size:13px}.pill{display:inline-block;padding:3px 8px;background:#edf3fa;border-radius:999px;font-size:12px}.empty{padding:18px;color:#7a889a;text-align:center}.link{border:0;background:transparent;color:#15569d;text-decoration:underline}.warning{color:#a52e34}.success{color:#16754b}details{margin:12px 0;padding:10px;border:1px solid #e0e7f0;border-radius:9px}summary{cursor:pointer;font-weight:650}fieldset{border:1px solid #d8e3f0;border-radius:10px;margin:14px 0;padding:12px}legend{font-weight:700}.wide{grid-column:1/-1}@media(max-width:800px){nav{grid-template-columns:repeat(2,minmax(0,1fr))}.grid,.stats{grid-template-columns:1fr}header{padding:12px}.layout{padding:12px}}
- .task-overdue{background:#fff0f0}.task-today{background:#edf5ff}.task-completed{opacity:.65}.task-upcoming{background:#fff} .task-view{display:grid;gap:12px}.task-info{display:grid;grid-template-columns:190px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid #e5eaf2}.task-subtasks{padding:14px;background:#f6f9ff;border:1px solid #dce7f7;border-radius:10px}.task-check-row{display:flex;gap:12px;align-items:center;font-size:15px;font-weight:400;padding:10px;border-bottom:1px solid #e5eaf2;margin:0;cursor:pointer}.task-check-row input{width:20px;height:20px;flex:0 0 20px;accent-color:#2364ad}.task-done{text-decoration:line-through;color:#7c8999}@media(max-width:600px){.task-info{grid-template-columns:1fr;gap:3px}} @media(max-width:700px){html,body{max-width:100%;overflow-x:hidden}header{flex-wrap:wrap!important}nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}.layout{padding:12px!important}.row{flex-wrap:wrap}.scroll{max-width:100%;overflow-x:auto}} </style><link rel="stylesheet" href="professional.css?v=uniform-rules-1"></head><body><header><div><h1>NEXURA</h1><small>Web v2.0 • Professional Workspace</small></div><span class="tag">LOCAL WORKSPACE • TEST DATA</span></header><div class="layout"><nav id="nav"></nav><main id="app"></main><div class="panel row"><span class="muted">Clean v2.0 test workspace — not connected to your live Supabase database.</span><div class="row start" style="display:none!important" aria-hidden="true"><button class="secondary small" id="backup">Export Test Backup</button><button class="secondary small" id="import">Import v2 Test Backup</button><input id="backupFile" type="file" accept=".json" hidden></div></div></div><div class="modal hidden" id="modal"><div class="inside" id="modalBody"></div></div><script src="app.js?v=task-search-20261108"></script><script src="task-sync.js?v=2"></script><script src="policy-records-stage2.js?v=fix-20261107b"></script><script src="promotion-review.js?v=1"></script><script src="promotion-integration.js?v=2"></script><script src="local-login-trial.js?v=1"></script><script src="tile1-diary-premiums.js?v=task-title-20261108"></script><script src="reports-upgrade.js?v=fix-20261107b"></script><script src="staff-enhancements.js?v=task-search-20261108"></script><script src="criteria-history-trial.js?v=1"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXURA Version 2.0</title>
+<style>
+:root{font-family:system-ui,Segoe UI,sans-serif;color:#172a43;background:#f3f6fb}
+*{box-sizing:border-box}
+body{margin:0}
+header{background:#173b67;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+header h1{margin:0;font-size:24px}
+header small{color:#cde1fa}
+.nx-brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.nx-brand small{font-size:12px}
+.nx-account{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap;min-width:0}
+#nx-auth-email{font-size:13px;overflow-wrap:anywhere}
+#nx-logout{background:#fff;color:#173b67;border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointer}
+#nx-logout:disabled{opacity:.6}
+.layout{max-width:1450px;margin:auto;padding:20px}
+nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:20px}
+button{cursor:pointer;font:inherit}
+nav button{background:#fff;border:1px solid #d7e2ef;border-radius:12px;padding:15px 8px;color:#284a72;font-weight:700;min-height:70px}
+nav button.active{background:#dceaff;border-color:#7aabec;color:#153e77}
+.panel,.stat{background:#fff;border:1px solid #dce5f0;border-radius:13px;padding:18px;margin-bottom:14px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stat strong{display:block;font-size:25px;color:#1e5a9c}
+.row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.row.start{justify-content:flex-start}
+h2{margin:0 0 10px;font-size:22px}
+h3{margin:4px 0 10px}
+.muted{color:#687b92;font-size:13px}
+input,select,textarea{width:100%;font:inherit;padding:10px;border:1px solid #c7d5e6;border-radius:8px;background:#fff}
+label{display:block;font-size:13px;font-weight:650;margin:10px 0 4px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+.primary,.secondary,.danger{border:0;border-radius:8px;padding:10px 14px}
+.primary{background:#2364ad;color:#fff}
+.secondary{background:#e6eef8;color:#24456a}
+.danger{background:#fbe3e6;color:#a32335}
+.small{font-size:12px;padding:6px 9px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:650px}
+td,th{border-bottom:1px solid #e4eaf3;text-align:left;padding:10px;font-size:13px}
+th{color:#60748e;background:#f6f9fd}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.tabs button{border:1px solid #cfdbea;background:white;border-radius:9px;padding:9px 11px}
+.tabs button.active{background:#dceaff;color:#1a518e}
+.modal{position:fixed;inset:0;background:#112744a8;display:flex;align-items:center;justify-content:center;padding:14px;z-index:10}
+.modal.hidden{display:none}
+.modal>.inside{width:min(780px,100%);max-height:92vh;overflow:auto;background:white;border-radius:14px;padding:20px}
+.hint{background:#f0f6ff;border-left:3px solid #3979be;padding:10px 13px;margin:10px 0;font-size:13px}
+.pill{display:inline-block;padding:3px 8px;background:#edf3fa;border-radius:999px;font-size:12px}
+.empty{padding:18px;color:#7a889a;text-align:center}
+.link{border:0;background:transparent;color:#15569d;text-decoration:underline}
+.warning{color:#a52e34}
+.success{color:#16754b}
+details{margin:12px 0;padding:10px;border:1px solid #e0e7f0;border-radius:9px}
+summary{cursor:pointer;font-weight:650}
+fieldset{border:1px solid #d8e3f0;border-radius:10px;margin:14px 0;padding:12px}
+legend{font-weight:700}
+.wide{grid-column:1/-1}
+.task-overdue{background:#fff0f0}
+.task-today{background:#edf5ff}
+.task-completed{opacity:.65}
+.task-upcoming{background:#fff}
+.task-view{display:grid;gap:12px}
+.task-info{display:grid;grid-template-columns:190px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid #e5eaf2}
+.task-subtasks{padding:14px;background:#f6f9ff;border:1px solid #dce7f7;border-radius:10px}
+.task-check-row{display:flex;gap:12px;align-items:center;font-size:15px;font-weight:400;padding:10px;border-bottom:1px solid #e5eaf2;margin:0;cursor:pointer}
+.task-check-row input{width:20px;height:20px;flex:0 0 20px;accent-color:#2364ad}
+.task-done{text-decoration:line-through;color:#7c8999}
+@media(max-width:800px){
+nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid,.stats{grid-template-columns:1fr}
+header{padding:12px}
+.layout{padding:12px}
+}
+@media(max-width:600px){
+.task-info{grid-template-columns:1fr;gap:3px}
+}
+@media(max-width:700px){
+html,body{max-width:100%;overflow-x:hidden}
+header{flex-wrap:wrap!important}
+.nx-account{justify-content:flex-start}
+nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.layout{padding:12px!important}
+.row{flex-wrap:wrap}
+.scroll{max-width:100%;overflow-x:auto}
+}
+</style>
+<link rel="stylesheet" href="professional.css?v=uniform-rules-1">
+</head>
+<body>
+
+<header>
+  <div class="nx-brand">
+    <h1>NEXURA</h1>
+    <small>Version 2.0</small>
+  </div>
+  <div class="nx-account">
+    <span id="nx-auth-email" aria-live="polite">Loading account...</span>
+    <button id="nx-logout" type="button">Logout</button>
+  </div>
+</header>
+
+<div class="layout">
+  <nav id="nav"></nav>
+  <main id="app"></main>
+  <div class="panel row">
+    <span class="muted"></span>
+    <div class="row start" style="display:none!important" aria-hidden="true">
+      <button class="secondary small" id="backup">Export Test Backup</button>
+      <button class="secondary small" id="import">Import v2 Test Backup</button>
+      <input id="backupFile" type="file" accept=".json" hidden>
+    </div>
+  </div>
+</div>
+
+<div class="modal hidden" id="modal">
+  <div class="inside" id="modalBody"></div>
+</div>
+
+<script src="app.js?v=task-search-20261108"></script>
+<script src="task-sync.js?v=2"></script>
+<script src="policy-records-stage2.js?v=fix-20261107b"></script>
+<script src="promotion-review.js?v=1"></script>
+<script src="promotion-integration.js?v=2"></script>
+<script src="local-login-trial.js?v=1"></script>
+<script src="tile1-diary-premiums.js?v=task-title-20261108"></script>
+<script src="reports-upgrade.js?v=fix-20261107b"></script>
+<script src="staff-enhancements.js?v=task-search-20261108"></script>
+<script src="criteria-history-trial.js?v=1"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  const emailElement =
+    document.getElementById("nx-auth-email");
+
+  const logoutButton =
+    document.getElementById("nx-logout");
+
+  async function loadAuthenticatedUser() {
+    try {
+      const response = await fetch("/api/auth/me", {
+        credentials: "same-origin",
+        cache: "no-store"
+      });
+
+      if (response.status === 401) {
+        window.location.replace("/");
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error("Authentication check failed");
+      }
+
+      const data = await response.json();
+
+      if (!data.authenticated || !data.user?.email) {
+        window.location.replace("/");
+        return;
+      }
+
+      emailElement.textContent = data.user.email;
+
+    } catch (error) {
+      console.error("Account loading failed:", error);
+      emailElement.textContent = "Account unavailable";
+    }
+  }
+
+  logoutButton.addEventListener("click", async () => {
+    logoutButton.disabled = true;
+
+    try {
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "same-origin",
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Logout failed");
+      }
+
+      window.location.replace("/");
+
+    } catch (error) {
+      console.error(error);
+      logoutButton.disabled = false;
+      alert("Logout failed. Please try again.");
+    }
+  });
+
+  loadAuthenticatedUser();
+})();
+</script>
+
+</body>
+</html>
