@@ -1835,3 +1835,98 @@
 
   scan();
 })();
+/* NEXURA V2 — Unified Reporting Actions Menu */
+(() => {
+  "use strict";
+
+  const app = document.getElementById("app");
+  if (!app) return;
+
+  const style = document.createElement("style");
+  style.textContent = `
+    .nx-ar, .nx-r3 {
+      border-radius: 10px;
+    }
+
+    .nx-ar details details {
+      margin: 6px 0;
+      padding: 8px 10px;
+      border: 1px solid #dce5f0;
+      border-radius: 7px;
+      background: #fff;
+    }
+
+    .nx-ar details details > summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 5px 0;
+    }
+
+    .nx-ar details details:not([open]) > :not(summary) {
+      display: none;
+    }
+
+    .nx-ar .nx-r3-integrated {
+      margin-top: 10px;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const processed = new WeakSet();
+
+  function consolidate() {
+    app.querySelectorAll(".nx-r3").forEach(step3 => {
+      if (processed.has(step3)) return;
+
+      const step2 = step3.previousElementSibling;
+
+      if (!step2 ||
+          !step2.classList.contains("nx-ar")) {
+        return;
+      }
+
+      const actions = step2.querySelector("details");
+      const advanced = step3.querySelector("details");
+
+      if (!actions || !advanced) return;
+
+      processed.add(step3);
+
+      const summary = actions.querySelector("summary");
+      if (summary) {
+        summary.textContent = "Actions";
+      }
+
+      const advancedSummary = advanced.querySelector("summary");
+      if (advancedSummary) {
+        advancedSummary.textContent =
+          "Charts, Pivot, Compute & Saved Reports";
+      }
+
+      advanced.classList.add("nx-r3-integrated");
+
+      actions.appendChild(advanced);
+
+      step3.remove();
+    });
+  }
+
+  let scheduled = false;
+
+  const observer = new MutationObserver(() => {
+    if (scheduled) return;
+    scheduled = true;
+
+    queueMicrotask(() => {
+      scheduled = false;
+      consolidate();
+    });
+  });
+
+  observer.observe(app, {
+    childList: true,
+    subtree: true
+  });
+
+  consolidate();
+})();
