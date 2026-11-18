@@ -137,7 +137,106 @@ function closeModal(){$('#modal').classList.add('hidden')}
 function table(headers,records,renderRow){return `<div class="scroll"><table><thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${records.length?records.map(renderRow).join(''):`<tr><td colspan="${headers.length}" class="empty">No records yet</td></tr>`}</tbody></table></div>`}
 function csv(name,head,rows){const q=x=>'"'+String(x??'').replace(/"/g,'""')+'"';download(name+'.csv','\ufeff'+[head,...rows].map(a=>a.map(q).join(',')).join('\r\n'),'text/csv')}
 function download(name,content,type){const u=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)}
-function pdf(title,headers,rows){const w=window.open('','_blank');if(!w){alert('Allow popups to print or save as PDF');return}w.document.write(`<title>${esc(title)}</title><style>body{font:12px Arial;margin:25px}table{width:100%;border-collapse:collapse}td,th{border:1px solid #bbb;padding:7px;text-align:left}@page{size:A4 landscape}</style><h2>NEXURA · ${esc(title)}</h2><p>${now()}</p>${table(headers,rows,r=>'<tr>'+r.map(x=>`<td>${esc(x)}</td>`).join('')+'</tr>')}`);w.document.close();setTimeout(()=>w.print(),350)}
+function nxFormatDateTime(value = new Date()) {
+  const date = value instanceof Date ? value : new Date(value);
+
+  if (Number.isNaN(date.getTime())) return "—";
+
+  const dateText = new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  }).format(date);
+
+  const timeText = new Intl.DateTimeFormat("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  }).format(date);
+
+  return `${dateText} | ${timeText}`;
+}
+
+function pdf(title, headers, rows) {
+  const w = window.open("", "_blank");
+
+  if (!w) {
+    alert("Allow popups to print or save as PDF");
+    return;
+  }
+
+  const printedOn = nxFormatDateTime();
+
+  const safeTitle = esc(title);
+
+  const reportTable = table(
+    headers,
+    rows,
+    r => "<tr>" +
+      r.map(x => `<td>${esc(x)}</td>`).join("") +
+      "</tr>"
+  );
+
+  w.document.write(`
+    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>NEXURA - ${safeTitle}</title>
+      <style>
+        body {
+          font: 12px Arial, sans-serif;
+          margin: 25px;
+          color: #172a43;
+        }
+
+        .report-header {
+          border-bottom: 2px solid #173b67;
+          padding-bottom: 12px;
+          margin-bottom: 18px;
+        }
+
+        .report-header h2 {
+          margin: 0 0 8px;
+        }
+
+        .print-date {
+          font-size: 12px;
+          font-weight: bold;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        td, th {
+          border: 1px solid #bbb;
+          padding: 7px;
+          text-align: left;
+        }
+
+        @page {
+          size: A4 landscape;
+          margin: 12mm;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="report-header">
+        <h2>NEXURA Version 2.0 - ${safeTitle}</h2>
+        <div class="print-date">
+          Printed On: ${printedOn}
+        </div>
+      </div>
+      ${reportTable}
+    </body>
+    </html>
+  `);
+
+  w.document.close();
+  setTimeout(() => w.print(), 350);
+}
 function actions(name,headers,records){return `<button class="secondary small" data-export="${name}">CSV</button> <button class="secondary small" data-print="${name}">PDF</button>`}
 function bindExports(name,head,rows){$$(`[data-export="${name}"]`).forEach(b=>b.onclick=()=>csv('nexura-'+name,head,rows));$$(`[data-print="${name}"]`).forEach(b=>b.onclick=()=>pdf(name,head,rows))}
 function tabs(names){return `<div class="tabs">${names.map(n=>`<button class="${tab===n?'active':''}" data-tab="${esc(n)}">${esc(n)}</button>`).join('')}</div>`}
