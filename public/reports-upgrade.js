@@ -1,4 +1,4 @@
-/* NEXURA V2.0 — Unified Interactive Reporting
+﻿/* NEXURA V2.0 â€” Unified Interactive Reporting
    Single Actions Menu / Search / Filters / Group / Pivot
    Charts / Saved Views / CSV / HTML / Excel / PDF Print
 */
@@ -274,7 +274,7 @@
 
     const menu = node("details");
     menu.className = "nx-report-menu";
-    menu.append(node("summary", "Actions ▾"));
+    menu.append(node("summary", "Actions â–¾"));
 
     const actions = node("div");
     actions.className = "nx-report-actions";
@@ -305,7 +305,7 @@
 
     const filterControls = [];
 
-    const sorting = section("Data — Sort");
+    const sorting = section("Data â€” Sort");
     const sort1 = select([["", "No Sorting"], ...fields]);
     const direction1 = select([
       ["asc", "Ascending"],
@@ -318,7 +318,7 @@
     ]);
     sorting.append(sort1, direction1, sort2, direction2);
 
-    const grouping = section("Data — Group & Aggregate");
+    const grouping = section("Data â€” Group & Aggregate");
     const groupField = select(fieldOptions);
     const aggregateField = select(fieldOptions);
     const aggregateMethod = select([
@@ -337,7 +337,7 @@
       aggregateMethod
     );
 
-    const computeSection = section("Data — Compute");
+    const computeSection = section("Data â€” Compute");
     const computeField = select(fieldOptions);
     const computeMethod = select([
       ["count", "Count"],
@@ -366,7 +366,7 @@
       computeResult
     );
 
-    const formatting = section("Format — Highlight");
+    const formatting = section("Format â€” Highlight");
     const highlightField = select(fieldOptions);
     const highlightOp = select([
       ["contains", "Contains"],
@@ -552,7 +552,7 @@
 
       row.append(
         join, field, op, value,
-        button("×", () => {
+        button("Ã—", () => {
           row.remove();
           filterControls.splice(
             filterControls.indexOf(entry), 1
@@ -816,7 +816,7 @@ th{background:#e9f1fb}
 </style>
 </head>
 <body>
-<h2>NEXURA Version 2.0 — Advanced Report</h2>
+<h2>NEXURA Version 2.0 â€” Advanced Report</h2>
 <p>Printed On: ${escape(stamp())}</p>
 <p>Matching Records: ${filtered.length}</p>
 ${htmlTable()}
@@ -1298,3 +1298,159 @@ ${htmlTable()}
 
   scan();
 })();
+/* NEXURA REPORT UI POLISH START */
+(() => {
+  const style = document.createElement("style");
+  style.id = "nx-report-polish";
+  style.textContent = `
+    /* Main Actions button */
+    .nx-report-menu > summary {
+      background: #173b67 !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      letter-spacing: .2px;
+      border: 1px solid #173b67 !important;
+      padding: 10px 18px !important;
+      min-width: 105px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,.12);
+    }
+
+    .nx-report-menu > summary:hover {
+      background: #24558c !important;
+      color: #ffffff !important;
+    }
+
+    .nx-report-menu[open] > summary {
+      background: #0d3159 !important;
+      color: #ffffff !important;
+    }
+
+    /* Actions dropdown */
+    .nx-report-actions {
+      width: min(410px, 90vw) !important;
+      max-height: 65vh !important;
+      padding: 12px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 10px !important;
+      box-shadow: 0 12px 30px rgba(0,0,0,.18) !important;
+    }
+
+    /* Individual menu sections */
+    .nx-report-actions > details {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 10px !important;
+      margin-bottom: 8px;
+    }
+
+    .nx-report-actions > details[open] {
+      background: #f8fafc;
+      border-color: #bfdbfe;
+    }
+
+    .nx-report-actions > details > summary {
+      color: #173b67 !important;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 6px !important;
+      line-height: 1.4;
+    }
+
+    /* Inputs and buttons */
+    .nx-report-actions input:not([type=checkbox]),
+    .nx-report-actions select {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 38px;
+      margin: 5px 0 !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #1e293b !important;
+      border-radius: 6px !important;
+    }
+
+    .nx-report-actions button {
+      min-height: 36px;
+      padding: 8px 12px !important;
+      margin: 4px 4px 4px 0;
+      background: #e8f0fb !important;
+      color: #173b67 !important;
+      border: 1px solid #c4d7f1 !important;
+      border-radius: 6px !important;
+      font-size: 12px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .nx-report-actions button:hover {
+      background: #d5e6fb !important;
+    }
+
+    .nx-report-actions p {
+      margin: 12px 0 5px !important;
+      font-size: 12px;
+      font-weight: 650;
+      color: #475569;
+    }
+
+    /* Checkboxes and filters */
+    .nx-report-actions label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 5px;
+      color: #334155;
+      font-size: 13px;
+    }
+
+    .nx-report-actions input[type=checkbox] {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .nx-report-filters > div {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px !important;
+      padding: 9px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .nx-report-filters > div input {
+      grid-column: 1 / -1;
+    }
+
+    /* Better report toolbar spacing */
+    .nx-report-toolbar {
+      gap: 10px !important;
+      align-items: center;
+    }
+
+    .nx-report-count {
+      color: #475569 !important;
+      font-weight: 600;
+    }
+
+    .nx-report-row {
+      gap: 10px !important;
+      margin-top: 12px !important;
+    }
+
+    @media (max-width: 600px) {
+      .nx-report-actions {
+        width: min(350px, 85vw) !important;
+      }
+
+      .nx-report-toolbar > select {
+        max-width: 100% !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+/* NEXURA REPORT UI POLISH END */
